@@ -67,6 +67,10 @@ class YOLOVideoStreamTrack(VideoStreamTrack):
             print("yolo video called")
             print("wait started")
             frame_bytes = await rtsp_client.getFrame()
+
+            if not frame_bytes:
+                print("empty frame received")
+                return None
             print("Received frame bytes:", len(frame_bytes))
 
             if len(frame_bytes) > 0:
